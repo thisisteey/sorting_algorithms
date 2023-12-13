@@ -1,5 +1,8 @@
 #include "sort.h"
 
+void swpnd(listint_t *fst, listint_t *scd);
+void insertion_sort_list(listint_t **list);
+
 /**
  * swpnd - swap two nodes in a doubly linked list
  * @fst: pointer to the first node
