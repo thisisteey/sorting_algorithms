@@ -3,25 +3,25 @@
 #define parentidx(x) (((x) - 1) / 2)
 #define leftchildidx(x) (((x) * 2) + 1)
 
-void swpint(int *array, size_t size, int *fst, int *scd);
+void swpinte(int *array, size_t size, int *fst, int *scd);
 void sift_down(int *array, size_t strtidx, size_t endidx, size_t size);
 void convarray(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 
 /**
- * swpint - swaps two integer values
+ * swpinte - swaps two integer values
  * @array: the array of integers to be swapped
  * @size: the sze of the array of integers
  * @fst: pointer to the first value to swap
  * @scd: pointer to the second value to swap
  * Return: void
  */
-void swpint(int *array, size_t size, int *fst, int *scd)
+void swpinte(int *array, size_t size, int *fst, int *scd)
 {
 	if (*fst != *scd)
 	{
 		*fst = *fst + *scd;
-		*scd = *scd - *scd;
+		*scd = *fst - *scd;
 		*fst = *fst - *scd;
 	}
 	print_array((const int *)array, size);
@@ -49,7 +49,7 @@ void sift_down(int *array, size_t strtidx, size_t endidx, size_t size)
 			swpidx = child + 1;
 		if (swpidx == curr)
 			return;
-		swpint(array, size, &array[curr], &array[swpidx]);
+		swpinte(array, size, &array[curr], &array[swpidx]);
 		curr = swpidx;
 	}
 }
@@ -88,7 +88,7 @@ void heap_sort(int *array, size_t size)
 	endidx = size - 1;
 	while (endidx > 0)
 	{
-		swpint(array, size, &array[endidx], &array[0]);
+		swpinte(array, size, &array[endidx], &array[0]);
 		endidx--;
 		sift_down(array, 0, endidx, size);
 	}
