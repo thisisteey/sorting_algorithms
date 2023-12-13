@@ -31,7 +31,7 @@ int count_int(int *array, size_t size, int target)
  */
 void counting_sort(int *array, size_t size)
 {
-	int maxval = 0, cmcount = 0, target = 0;
+	int k = 0, cmcount = 0, target = 0;
 	size_t x, count;
 	int *arrcount, *arrsort;
 
@@ -39,15 +39,15 @@ void counting_sort(int *array, size_t size)
 		return;
 	for (x = 0 ; x < size ; x++)
 	{
-		if (array[x] > maxval)
+		if (array[x] > k)
 		{
-			maxval = array[x];
+			k = array[x];
 		}
 	}
-	arrcount = malloc(sizeof(int) * (maxval + 1));
+	arrcount = malloc(sizeof(int) * (k + 1));
 	if (arrcount == NULL)
 		return;
-	for (count = 0 ; count < ((size_t)maxval + 1) ; count++)
+	for (count = 0 ; count < ((size_t)k + 1) ; count++)
 	{
 		if (count == 0)
 			arrcount[count] = count_int(array, size, target);
@@ -58,7 +58,7 @@ void counting_sort(int *array, size_t size)
 		}
 		target++;
 	}
-	print_array(arrcount, (maxval + 1));
+	print_array(arrcount, (k + 1));
 	arrsort = malloc(sizeof(int) * size);
 	if (arrsort == NULL)
 	{
